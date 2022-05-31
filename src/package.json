@@ -1,0 +1,28 @@
+{
+  "name": "bootcamp---javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "rimraf dist && parcel ./src/index.html --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidmartirio/BootCampJavascript.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": { 
+    "url": "https://github.com/davidmartirio/BootCampJavascript/issues"
+  },
+  "homepage": "https://github.com/davidmartirio/BootCampJavascript#readme",
+  "devDependencies": {
+    "parcel": "^2.6.0",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
