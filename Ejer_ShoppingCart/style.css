@@ -1,0 +1,19 @@
+.titulo {
+  text-align: center;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 15px;
+}
+
+.section_zapas {
+  border: 1px solid rgb(183, 182, 182);
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.texto_zapa {
+  color: gray;
+  font-size: 12px;
+}
+
