@@ -99,22 +99,6 @@ const mayorNumeroNoches = booking1.count > booking2.count ? booking1.count : boo
 booking1.count > booking2.count ? console.log("booking1 tiene mas numero de noches") :
                                   console.log("booking2 tiene mas numero de noches");
 
-/*Ejercicio 2-2 Avanzado
-
-function getTotalVat(product) {
-  return product.count > 0 ? product.count \* getVat(product) : 0;
-}
-
-function printProductPrice(product) {
-  const subtotal = getTotal(product);
-  const vat = getTotalVat(product);
-  const total = subtotal + vat;
-
-  console.log("Subtotal:", subtotal + "€");
-  console.log("IVA:", vat + "€");
-  console.log("Total:", total + "€");
-}*/
-
 /*Ejercicios Extra
 1º Dado el siguiente objeto. Escribir en una variable un día de la semana y
 decir cual asignatura toca ese día.
@@ -166,3 +150,19 @@ if( hora > 6 && hora < 12){
   console.log("Buenas noches¡")
 
 }
+
+/*Ejercicio 2-2 Avanzado, de momento no lo he visto
+
+function getTotalVat(product) {
+  return product.count > 0 ? product.count \* getVat(product) : 0;
+}
+
+function printProductPrice(product) {
+  const subtotal = getTotal(product);
+  const vat = getTotalVat(product);
+  const total = subtotal + vat;
+
+  console.log("Subtotal:", subtotal + "€");
+  console.log("IVA:", vat + "€");
+  console.log("Total:", total + "€");
+}*/
