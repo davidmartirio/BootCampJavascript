@@ -11,13 +11,13 @@ product.count <= 0 ? (total = 0) : (total = product.count * product.price);
 
 switch (tipo) {
   case "ropa":
-    console.log("El precio total con iva de la ropa es de:", total * 0.21, "euros");
+    console.log("El precio total con iva de la ropa es de:", total * 1.21, "euros");
     break;
   case "alimentacion":
-    console.log("El precio total con iva de alimentacion es de:", total * 0.1, "euros");
+    console.log("El precio total con iva de alimentacion es de:", total * 1.1, "euros");
     break;
   case "libro":
-    console.log("El precio total con iva del libro es de:", total * 0.04, "euros");
+    console.log("El precio total con iva del libro es de:", total * 1.04, "euros");
     break;
 }
 
