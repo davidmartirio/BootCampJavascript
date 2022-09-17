@@ -151,6 +151,64 @@ if( hora > 6 && hora < 12){
 
 }
 
+console.log("")
+console.log("//3º Dada una variable que se llame diaSemana , que contenga un número del 1 al 7 mostrar el día de la semana")
+
+let diaSemana = 1;
+
+switch(diaSemana){
+  case 1:{
+  console.log("Lunes")
+  break;
+  }
+  case 2:{
+    console.log("Martes")
+    break;
+  }
+  case 3:{
+    console.log("Miercoles")
+    break;
+  }
+  case 4:{
+    console.log("Jueves")
+    break;
+  }
+  case 5:{
+    console.log("Viernes")
+    break;
+  }
+  case 6:{
+    console.log("Sabado")
+    break;
+  }
+  case 7:{
+    console.log("Domingo")
+    break;
+  }
+
+}
+
+console.log("")
+console.log("//4º Calcula la media de tres notas y muestra si está apta, no apta, notable o sobre saliente",
+"Una persona está apta con un 5. - Una persona no apta de menos de un 5. - Notable de 5 a 7. - Sobre saliente de 7 al 10.")
+
+let notaMates = 10;
+let notaLengua = 10;
+let notaIngles = 10;
+
+let totalNotas = notaIngles + notaLengua + notaMates;
+let media = totalNotas / 3;
+
+if(media == 5){
+  console.log("Acto")
+}else if(media < 5){
+  console.log("No acto")
+}else if(media > 5 && media < 7 ){
+  console.log("Notable")
+}else if(media > 7 && media <= 10 ){
+  console.log("Sobresaliente")
+}
+
 /*Ejercicio 2-2 Avanzado, de momento no lo he visto
 
 function getTotalVat(product) {
