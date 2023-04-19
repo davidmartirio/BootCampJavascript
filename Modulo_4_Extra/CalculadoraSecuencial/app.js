@@ -21,79 +21,126 @@
 
 //Ejercicio
 
+// Obtener referencias a los elementos del DOM
+const operando = document.getElementById('operando') 
+const botonSuma = document.getElementById('buttonSumar') 
+const botonResta = document.getElementById('buttonRestar') 
+const botonMultiplicacion = document.getElementById('buttonMultiplicar') 
+const botonDivision = document.getElementById('buttonDividir') 
+const botonIgual = document.getElementById('buttonIgual') 
+const resultado = document.getElementById('resultado') 
 
-var operandoA;
-var operandoB;
-var operacion;
-var res = 0;
+// Variables para almacenar el resultado parcial y la operación anterior
+let resultadoParcial = 0;
+let operacionAnterior = null;
 
+// Funciones para realizar las operaciones
+function suma(a,b) {
+    return a + b;
+}
 
-document.getElementById("buttonSumar").addEventListener("click", resultadoSuma);
-document.getElementById("buttonRestar").addEventListener("click", resultadoResta);
-document.getElementById("buttonMultiplicar").addEventListener("click", resultadoMultiplicacion);
-document.getElementById("buttonDividir").addEventListener("click", resultadoDivision);
-document.getElementById("buttonIgual").addEventListener("click", resultadoIgual);
+function resta(a,b) {
+    return a - b;
+}
 
+function multiplicacion(a,b) {
+    return a * b;
+}
 
-//Eventos
+function division(a,b) {
+    if (b == 0) {
+        return "Error: División por cero";
+    } else {
+        return a / b;
+    }
+}
 
-        function resultadoSuma(){
-            operandoA = document.getElementById("resultado").value;
-            operacion = "+";
-            limpiar();
-        }
-        function resultadoResta(){
-            operandoA = document.getElementById("resultado").value;
-            operacion = "-";
-            limpiar();
-        }
-        function resultadoMultiplicacion(){
-            operandoA = document.getElementById("resultado").value;
-            operacion = "x";
-            limpiar();
-        }
-        function resultadoDivision(){
-            operandoA = document.getElementById("resultado").value;
-            operacion = "/";
-            limpiar();
-        }
-        function resultadoIgual(){
-            operandoB = document.getElementById("resultado").value;
-            resolver();
-        }
-        function limpiar(){
-            document.getElementById("resultado").value = "";          
-        }
+// Función para actualizar el resultado parcial
+function actualizarResultadoParcial() {
+    const nuevoOperando = Number(operando.value);
+    if (operacionAnterior) {
+        resultadoParcial = operacionAnterior(resultadoParcial, nuevoOperando);
+    } else {
+        resultadoParcial = nuevoOperando;
+    }
+}
 
-        function resolver(){
-            switch(operacion){
-                case "+":
-                res = parseFloat(operandoA) + parseFloat(operandoB);
-                break; 
+// Añadir event listeners a los botones
+botonSuma.addEventListener('click', () => {
+    actualizarResultadoParcial();
+    operacionAnterior = suma;
+    operando.value = '';
+    operando.focus();
+});
 
-                case "-":
-                res = parseFloat(operandoA) - parseFloat(operandoB);
-                break; 
+botonResta.addEventListener('click', () => {
+    actualizarResultadoParcial();
+    operacionAnterior = resta;
+    operando.value = '';
+    operando.focus();
+});
 
-                case "x":
-                res = parseFloat(operandoA) * parseFloat(operandoB);
-                break; 
+botonMultiplicacion.addEventListener('click', () => {
+    actualizarResultadoParcial();
+    operacionAnterior = multiplicacion;
+    operando.value = '';
+    operando.focus();
+});
 
-                case "/":
-                res = parseFloat(operandoA) / parseFloat(operandoB);
-                break; 
-            }
+botonDivision.addEventListener('click', () => {
+    actualizarResultadoParcial();
+    operacionAnterior = division;
+    operando.value = '';
+    operando.focus();
+});
 
-            limpiar();
-            ejecutar(); 
+botonIgual.addEventListener('click', () => {
+    actualizarResultadoParcial();
+    resultado.textContent = ('El Resultado de la Operacion es: ' ) + resultadoParcial.toString();
+    resultadoParcial = 0;
+    operacionAnterior = null;
+    document.getElementById('operando').value = '';
+    operando.focus()
+    
+});
 
-            function ejecutar(){
-                if(operandoB === "" || resultadoIgual == operandoA + operandoB || resultadoIgual == operandoA * operandoB || resultadoIgual == operandoA - operandoB || resultadoIgual == operandoA / operandoB ){
-                    document.getElementById("resultado").value = alert("Error, vuelve a intentarlo"); 
-                    document.getElementById("resultado").value = "";
-                } else {
-                    document.getElementById("resultado").value = res; 
-                }
-            }
-            
-        }
+operando.addEventListener('input', () => {
+    resultado.textContent = '';
+});
+
+// Añadir event listener para el evento keydown
+document.addEventListener('keydown', (event) => {
+    switch (event.key) {
+        case '+':
+            event.preventDefault();
+            actualizarResultadoParcial();
+            operacionAnterior = suma;
+            operando.value = '';
+            break;
+        case '-':
+            event.preventDefault();
+            actualizarResultadoParcial();
+            operacionAnterior = resta;
+            operando.value = '';
+            break;
+        case '*':
+            event.preventDefault();
+            actualizarResultadoParcial();
+            operacionAnterior = multiplicacion;
+            operando.value = '';
+            break;
+        case '/':
+            event.preventDefault();
+            actualizarResultadoParcial();
+            operacionAnterior = division;
+            operando.value = '';
+            break;
+        case 'Enter':
+            actualizarResultadoParcial();
+            resultado.textContent = ('El Resultado de la Operacion es: ' ) + resultadoParcial.toString();
+            resultadoParcial = 0;
+            operacionAnterior = null;
+            document.getElementById('operando').value = '';
+            break;
+    }
+});

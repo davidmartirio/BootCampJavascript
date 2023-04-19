@@ -1,28 +1,20 @@
-.Numero {
-  margin-bottom: 10px;
-  font-size: 20px;
-  font-weight: 600;
-}
+
 .NumeroInput {
   width: 20%;
   font-size: 25px;
   font-weight: 700;
   color: rgb(241, 23, 23);
 }
-
-.Resultado {
-  font-size: 20px;
-  font-weight: 600;
-}
-.ResultadoInput {
-  width: 65%;
-  margin-left: 5px;
-  font-size: 18px;
-  font-weight: 600;
-  color: rgb(241, 23, 23);
-}
 #contenedor{
     display: inline-block;
+}
+#resultado{
+  display: inline-block;
+  margin-left: 18px;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(27, 38, 144)
+
 }
 .button {
   margin-top: 15px;
@@ -32,5 +24,9 @@ body {
   padding: 15px;
   background-color: rgb(37, 121, 121);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+h1{
+  color: rgb(126, 32, 32);
+  font-size: 28px;
 }
 
