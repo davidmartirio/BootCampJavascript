@@ -10,29 +10,34 @@
 <h1>Calculadora Secuencial</h1>
 <body>
     <div id="contenedor">
-        <label for="text">Selecciona una Habitacion</label>
-        <select id="selectHabitacion">
-            <option value="Selecciona" id="Selecciona">Selecciona</option>
-            <option value="Standard" id="Standard">Standart</option>
-            <option value="Junior Suite" id="Junior">Junior</option>
-            <option value="Suite " id="Suite">Suite</option>
-        </select><br>
-        <label for="text">Marca la casilla si quieres usar el Spa</label>
-    <input type="checkbox" id="spaElegido"></input><br>
-    <label for="text">Selecciona la Ocupación</label>
-    <select id="selectOcupacion">
-        <option value="Selecciona" id="Selecciona">Selecciona</option>
-        <option value="Individual" id="Individual">Individual</option>
-        <option value="Doble" id="Doble">Doble</option>
-        <option value="Triple" id="Triple">Triple</option>
-    </select><br>
-    <label for="text">Cuantas noches desea?</label>
-    <input type="number" id="noches"></input><br>
-    <label for="text">Cuantas noches de Parking desea?</label>
-    <input type="number" id="nochesParking"></input> <br>
-    <button type="button" id="Calcular" onclick="resultado2()">Calcular</button><br>
-    <label for="Numero" class="Numero">El precio sera de: </label>
-    <span id="resultado"></span>
+        <form>
+            <label for="habitación">Tipo de habitación:</label>
+            <select id="habitación">
+              <option value="standard">Standard</option>
+              <option value="juniorSuite">Junior Suite</option>
+              <option value="suite">Suite</option>
+            </select><br><br>
+          
+            <label for="spa">Uso del SPA:</label>
+            <input type="checkbox" id="spa"><br><br>
+          
+            <label for="categoria">Ocupación:</label>
+            <select id="categoria">
+              <option value="individual">Individual</option>
+              <option value="double">Doble</option>
+              <option value="triple">Triple</option>
+            </select><br><br>
+          
+            <label for="noche">Número de noches:</label>
+            <input type="number" id="noche"><br><br>
+          
+            <label for="nochesParking">Noches de parking:</label>
+            <input type="number" id="nochesParking"><br><br>
+          
+            <button type="button" onclick="CalcularPrecio()">Calcular</button>
+          </form>
+          
+          <p>El coste total del hotel es: <span id="Total"></span></p>
     <div>
         <script src="app.js"></script>
     </div>

@@ -27,64 +27,61 @@
 
 //Ejercicio
 
-//variables
-    var habitaciones = {
-        habitaciónStandart : 100,
-        habitaciónJuniorSuite : 120,
-        habitaciónSuite : 150
-    };
-    var ocupaciones = {
-        ocupaciónIndividual : 0.75,
-        ocupaciónDoble : 1,
-        ocupaciónTriple : 1.25
-    };
-    var spa = 20;
-    var precioNocheParking = 10;
-    var numeroNoches = document.getElementById('noches').value
-    var numeroNochesParking = document.getElementById('nochesParking')
-    var calcular;
-    var ocupacion;
-    var resultado = 0;
-    var selectHabitacion;
-    var selectOcupacion;
-
-
-    function habitacionElegida(){
-        selectHabitacion = document.getElementById('selectHabitacion')
-        if(selectHabitacion.value == Selecciona){
-            selectHabitacion.value == habitaciones.habitaciónStandart;
-        }else if(selectHabitacion.value == Individual){
-            selectHabitacion.value == habitaciones.habitaciónJuniorSuite;
-        }else if(selectHabitacion.value == Individual){
-            selectHabitacion.value == habitaciones.habitaciónSuite;
-        }
-}
-    function spaElegido(){
-        if(document.getElementById('spaElegido').checked){
-            selectHabitacion = selectHabitacion + 20;
-        }else{
-            selectHabitacion = selectHabitacion;
-        }
-        
+function CalcularPrecio() {
+    // Obtener valores del formulario
+    const tipoHabitación = document.getElementById('habitación').value;
+    const eligeSpa = document.getElementById('spa').checked;
+    const tipoCategoria = document.getElementById('categoria').value;
+    let numeroNoches = document.getElementById('noche').value;
+    const numeroParkingNoches = document.getElementById('nochesParking').value;
+  
+    // Calcular tarifa por noche en función del tipo de habitación y uso del SPA
+    function calcularTarifaNoche(tipoHabitacion) {
+      let tarifaNoche;
+      switch (tipoHabitacion) {
+        case 'standard':
+          tarifaNoche = 100;
+          break;
+        case 'juniorSuite':
+          tarifaNoche = 120;
+          break;
+        case 'suite':
+          tarifaNoche = 150;
+          break;
+      }
+      return tarifaNoche;
+    }
+  
+    function calcularTarifaSpa(eligeSpa, tarifaNoche) {
+      if (eligeSpa) {
+        tarifaNoche = tarifaNoche + 20;
+      }
+      return tarifaNoche;
     }
 
-    function ocupacionElegida(){
-        selectOcupacion = document.getElementById('selectOcupacion')
-        if(selectOcupacion.value == Selecciona){
-            selectOcupacion.value == ocupaciones.ocupaciónIndividual;
-        }else if(selectOcupacion.value == Individual){
-            selectOcupacion.value == ocupaciones.ocupaciónDoble;
-        }else if(selectOcupacion.value == Individual){
-            selectOcupacion.value == ocupaciones.ocupaciónTriple;
-        }
+     function aplicarOcupacion(tipoCategoria, tarifaNoche) {
+      switch (tipoCategoria) {
+        case 'individual':
+          tarifaNoche = tarifaNoche * 0.75;
+          break;
+        case 'triple':
+          tarifaNoche = tarifaNoche * 1.25;
+          break;
+      }
+      return tarifaNoche;
     }
-        
-    function resultado2(){
-        resultado = parseInt((selectHabitacion * selectOcupacion) * numeroNoches) + (10 * numeroNochesParking);
-        document.getElementById('resultado').innerText = resultado;
-    }
-
-
+  
+    // Calcular coste total
+    let tarifaNoche = calcularTarifaNoche(tipoHabitación);
+    tarifaNoche = calcularTarifaSpa(eligeSpa, tarifaNoche);
+    tarifaNoche = aplicarOcupacion(tipoCategoria, tarifaNoche);
+    
+    
+    const total = (tarifaNoche * numeroNoches) + (numeroParkingNoches * 10);
+  
+    // Mostrar coste total
+    document.getElementById('Total').textContent = total + '€';
+  }
 
 // 5 noches x Hab. Estándar con SPA de uso individual + 2 noches de parking. En este caso la tarifa por noche sería:
 // (100€ noche + 20€ spa) al 75% por uso individual = 90€/noche x 5 noches = 450€ + (10€ parking x 2 noches) = 470€ TOTAL.
